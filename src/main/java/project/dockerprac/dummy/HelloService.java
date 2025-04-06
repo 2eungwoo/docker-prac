@@ -19,3 +19,4 @@ public class HelloService {
         helloRepository.save(helloEntity);
     }
 }
+
