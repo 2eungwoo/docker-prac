@@ -22,8 +22,6 @@ services:
     environment:
       - MYSQL_DATABASE=${DB_NAME}
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
-#    volumes:
-#      - ./mysql/config:/etc/mysql/conf.d
     ports:
       - "3306:3306"
 
@@ -32,7 +30,7 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
-    depends_on: # redis, mysql container run -> app container run
+    depends_on:
       - docker-prac-redis
       - docker-prac-mysql
     image: swo98/docker-prac-application
@@ -42,10 +40,9 @@ services:
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
       - DB_NAME=${DB_NAME}
-      - PROFILES_ACTIVE=local
+      - PROFILES_ACTIVE=prod
     ports:
       - "8080:8080"
-    # restart: always
+    restart: always
 
-# ports : {컨테이너_외부}:{컨테이너_내부}
 

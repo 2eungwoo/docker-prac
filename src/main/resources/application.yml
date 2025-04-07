@@ -2,12 +2,12 @@ spring:
   config:
     import: optional:file:.env[.properties]
   profiles:
-    active: local # default active status -> local
-    group:
-      local:
-        - common
-      prod:
-        - common
+    active: ${PROFILES_ACTIVE}
+#    group:
+#      local:
+#        - common
+#      prod:
+#        - common
 
 ---
 
@@ -33,7 +33,7 @@ spring:
   data:
     redis:
       host: ${REDIS_HOST}
-      port: ${REDIS_PORT}
+      port: 6379
 
 #server:
 #  port: 8081
@@ -62,7 +62,7 @@ spring:
   data:
     redis:
       host: ${REDIS_HOST}
-      port: ${REDIS_PORT}
+      port: 6379
 
 #server:
 #  port: 8082
@@ -91,7 +91,7 @@ spring:
   data:
     redis:
       host: ${REDIS_HOST}
-      port: ${REDIS_PORT}
+      port: 6379
 
 #server:
 #  port: 8083
