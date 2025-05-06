@@ -6,7 +6,7 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./redis
-    image: swo98/docker-prac-redis
+    image: 2eungwoo/docker-prac-redis
     environment:
       - REDIS_HOST=${REDIS_HOST}
       - REDIS_PORT=${REDIS_PORT}
@@ -18,7 +18,7 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./mysql
-    image: swo98/docker-prac-mysql
+    image: 2eungwoo/docker-prac-mysql
     environment:
       - MYSQL_DATABASE=${DB_NAME}
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
@@ -35,7 +35,7 @@ services:
     depends_on: # redis, mysql container run -> app container run
       - docker-prac-redis
       - docker-prac-mysql
-    image: swo98/docker-prac-application
+    image: 2eungwoo/docker-prac-application
     environment:
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
@@ -45,7 +45,7 @@ services:
       - PROFILES_ACTIVE=local
     ports:
       - "8080:8080"
-    # restart: always
+    restart: always
 
 # ports : {컨테이너_외부}:{컨테이너_내부}
 
